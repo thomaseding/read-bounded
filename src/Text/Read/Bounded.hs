@@ -56,22 +56,26 @@ readBoundedInteger str = case readMaybe str of
 --
 -- This class is designed to avoid inconsistency problems such as the following:
 --
--- >>> read "999999999999999999999" :: Int
--- 3875820019684212735
--- >>> read "9999999999999999999999" :: Int
--- 1864712049423024127
+-- >>> read "321" :: Word8
+-- 65
+-- >>> read "4321" :: Word8
+-- 225
+-- >>> read "-4" :: Word8
+-- 252
 --
 -- Using this class, the results are predictable and precise:
 --
--- >>> readBounded "999999999999999999999" :: BoundedRead Int
--- ClampedRead 9223372036854775807
--- >>> readBounded "9999999999999999999999" :: BoundedRead Int
--- ClampedRead 9223372036854775807
--- >>> readBounded "9223372036854775807" :: BoundedRead Int
--- ExactRead 9223372036854775807
--- >>> readBounded "1337" :: BoundedRead Int
--- ExactRead 1337
--- >>> readBounded "xxx" :: BoundedRead Int
+-- >>> readBounded "321" :: BoundedRead Word8
+-- ClampedRead 255
+-- >>> readBounded "4321" :: BoundedRead Word8
+-- ClampedRead 255
+-- >>> readBounded "-4" :: BoundedRead Word8
+-- ClampedRead 0
+-- >>> readBounded "255" :: BoundedRead Word8
+-- ExactRead 255
+-- >>> readBounded "6" :: BoundedRead Word8
+-- ExactRead 6
+-- >>> readBounded "xxx" :: BoundedRead Word8
 -- NoRead
 class ReadBounded a where
     readBounded :: String -> BoundedRead a
