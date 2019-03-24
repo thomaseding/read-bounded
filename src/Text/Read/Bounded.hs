@@ -1,3 +1,4 @@
+-- | Class for reading bounded values.
 module Text.Read.Bounded (
     BoundedRead(..),
     ReadBounded(..),
