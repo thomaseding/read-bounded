@@ -13,7 +13,7 @@ name:                read-bounded
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.1.1.2
+version:             0.1.1.3
 
 -- A short (one-line) description of the package.
 synopsis:            Class for reading bounded values
@@ -59,7 +59,7 @@ library
   -- other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends:       base ^>=4.12.0.0
+  build-depends:       base ^>=4.13.0.0
 
   -- Directories containing source files.
   hs-source-dirs:      src
